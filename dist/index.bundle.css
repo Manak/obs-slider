@@ -72,8 +72,6 @@ body, html {
           border-radius: 5px;
           padding: 5px;
           transform: rotate(-45deg); }
-      .container .slide-out-container .item.follow .text {
-        font-size: 40px; }
 
 #heart {
   position: relative;
