@@ -76,12 +76,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var currentItem = 0;
 
 window.onload = function(){
-	//item cycle
+	let direction = getParameterByName('direction');
+
+	let twitterUsername = getParameterByName('twitter');
+	let ytUsername = getParameterByName('youtube');
+
+	if(!twitterUsername){
+		let twitter = document.getElementById('twitter-container');
+		twitter.parentNode.removeChild(twitter);
+	} else {
+		document.getElementById('twitter-text').innerText = `@${twitterUsername}`;
+	}
+
+	if(!ytUsername){
+		let youtube = document.getElementById('youtube-container');
+		youtube.parentNode.removeChild(youtube);
+	} else {
+		document.getElementById('youtube-text').innerText = `@${ytUsername}`;
+	}
+
 	var items = document.getElementsByClassName('item');
+		//item cycle
 
 	const ITEM_CYCLE_TIME = 8000;
 	const CARD_IN_OUT_TIME = 300000;
 	const CARD_ACTIVE_TIME = ITEM_CYCLE_TIME * items.length;
+
+
+
+	if(direction !== 'left' && direction !== 'right') {
+		direction = 'right';
+	}
 
 	//set first item to active
 	items.item(currentItem).classList.add('active');
@@ -93,6 +118,9 @@ window.onload = function(){
 
 
 
+	//card cycle
+	var card = document.getElementsByClassName('slide-out-container')[0];
+	card.classList.add(direction);
 	var cardSetup = () => {
 		card.classList.remove('in');
 		card.classList.add('out');
@@ -101,13 +129,19 @@ window.onload = function(){
 			card.classList.add('in');
 		}, CARD_ACTIVE_TIME);
 	};
-
-	//card cycle
-	var card = document.getElementsByClassName('slide-out-container')[0];
-
 	cardSetup();
 	setInterval(cardSetup, CARD_IN_OUT_TIME);
 
+}
+
+function getParameterByName(name, url) {
+	if (!url) url = window.location.href;
+	name = name.replace(/[\[\]]/g, '\\$&');
+	var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+	results = regex.exec(url);
+	if (!results) return null;
+	if (!results[2]) return '';
+	return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
 
