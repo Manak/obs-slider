@@ -80,6 +80,8 @@ window.onload = function(){
 
 	let twitterUsername = getParameterByName('twitter');
 	let ytUsername = getParameterByName('youtube');
+	let igUsername = getParameterByName('instagram');
+	let scUsername = getParameterByName('snapchat');
 
 	if(!twitterUsername){
 		let twitter = document.getElementById('twitter-container');
@@ -94,6 +96,21 @@ window.onload = function(){
 	} else {
 		document.getElementById('youtube-text').innerText = `@${ytUsername}`;
 	}
+
+	if(!igUsername){
+		let instagram = document.getElementById('instagram-container');
+		instagram.parentNode.removeChild(instagram);
+	} else {
+		document.getElementById('instagram-text').innerText = `@${igUsername}`;
+	}
+
+	if(!scUsername){
+		let sc = document.getElementById('snapchat-container');
+		sc.parentNode.removeChild(sc);
+	} else {
+		document.getElementById('snapchat-text').innerText = `@${scUsername}`;
+	}
+
 
 	var items = document.getElementsByClassName('item');
 		//item cycle

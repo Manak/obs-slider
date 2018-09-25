@@ -51,6 +51,10 @@ body, html {
           color: #1DA1F2; }
         .container .slide-out-container .item .image.youtube {
           color: #FF0000; }
+        .container .slide-out-container .item .image.instagram {
+          color: #000000; }
+        .container .slide-out-container .item .image.snapchat {
+          color: #FFFB00; }
       .container .slide-out-container .item .text {
         padding-left: 30px;
         font-size: 60px;
